@@ -6,10 +6,7 @@ import {
   ArrowLeft,
   Bell,
   Shield,
-  Mail,
-  Smartphone,
   Globe,
-  Moon,
   Eye,
   EyeOff,
 } from 'lucide-react'

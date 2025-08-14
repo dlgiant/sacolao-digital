@@ -10,15 +10,15 @@ import { formatCurrency } from '@/lib/utils'
 
 export default function FavoritosPage() {
   // Mock favorite products - in a real app, this would come from a context or API
-  const [favoriteIds, setFavoriteIds] = useState<number[]>([
-    1, 3, 5, 8, 10, 12, 15, 18, 20, 22, 24, 25,
+  const [favoriteIds, setFavoriteIds] = useState<string[]>([
+    '1', '3', '5', '8', '10', '12', '15', '18', '20', '22', '24', '25',
   ])
   const favoriteProducts = products.filter((product) =>
     favoriteIds.includes(product.id)
   )
   const { addToCart } = useCart()
 
-  const removeFavorite = (productId: number) => {
+  const removeFavorite = (productId: string) => {
     setFavoriteIds((prev) => prev.filter((id) => id !== productId))
   }
 
