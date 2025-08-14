@@ -1,36 +1,156 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sacolão Digital - E-commerce de Hortifrúti
 
-## Getting Started
+Site de e-commerce brasileiro para venda de frutas, verduras e legumes frescos com entrega rápida.
 
-First, run the development server:
+## 🚀 Tecnologias
+
+- **Next.js 15** - Framework React com App Router
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS** - Estilização
+- **Lucide React** - Ícones
+- **Vercel** - Hospedagem
+
+## 🌟 Funcionalidades
+
+- ✅ Catálogo de produtos com categorias (Frutas, Verduras, Legumes, etc.)
+- ✅ Página de detalhes do produto
+- ✅ Carrinho de compras com persistência local
+- ✅ Sistema de checkout completo
+- ✅ Formas de pagamento brasileiras (PIX, Cartão, Boleto)
+- ✅ Design responsivo para mobile
+- ✅ Filtros e busca de produtos
+- ✅ Sistema de descontos e ofertas
+
+## 🏃‍♂️ Como Executar Localmente
 
 ```bash
+# Instalar dependências
+npm install
+
+# Executar em modo de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Abrir no navegador
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📦 Deploy no Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Opção 1: Deploy via CLI
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Instalar Vercel CLI globalmente
+npm i -g vercel
 
-## Learn More
+# Fazer login no Vercel
+vercel login
 
-To learn more about Next.js, take a look at the following resources:
+# Deploy
+vercel --prod
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Opção 2: Deploy via GitHub
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Faça push do código para um repositório no GitHub
+2. Acesse [vercel.com](https://vercel.com)
+3. Conecte sua conta GitHub
+4. Importe o projeto
+5. Configure as variáveis de ambiente (se necessário)
+6. Clique em "Deploy"
 
-## Deploy on Vercel
+## 🌐 Configuração do Domínio sacolao.digital
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Após o deploy no Vercel:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **No Vercel Dashboard:**
+   - Acesse seu projeto
+   - Vá em "Settings" → "Domains"
+   - Adicione o domínio `sacolao.digital`
+   - Vercel fornecerá os registros DNS necessários
+
+2. **No seu provedor de domínio:**
+   - Configure os registros DNS conforme instruções do Vercel:
+     - **Opção A (Recomendado):** Adicione um registro A apontando para `76.76.21.21`
+     - **Opção B:** Use CNAME apontando para `cname.vercel-dns.com`
+
+3. **Para www:**
+   - Adicione também `www.sacolao.digital` no Vercel
+   - Configure um registro CNAME de `www` para `cname.vercel-dns.com`
+
+4. **Aguarde propagação DNS** (pode levar até 48h)
+
+## 🔑 Variáveis de Ambiente
+
+Crie um arquivo `.env.local` se precisar adicionar configurações:
+
+```env
+# Exemplo para futuras integrações
+NEXT_PUBLIC_API_URL=https://api.sacolao.digital
+```
+
+## 📱 Páginas Disponíveis
+
+- `/` - Homepage com categorias e produtos em destaque
+- `/produtos` - Listagem de todos os produtos com filtros
+- `/produto/[id]` - Detalhes do produto
+- `/carrinho` - Carrinho de compras
+- `/checkout` - Finalização do pedido
+
+## 🎨 Estrutura do Projeto
+
+```
+sacolao-digital/
+├── app/                  # Páginas e rotas (App Router)
+│   ├── layout.tsx       # Layout principal
+│   ├── page.tsx         # Homepage
+│   ├── produtos/        # Página de produtos
+│   ├── produto/[id]/    # Detalhes do produto
+│   ├── carrinho/        # Carrinho
+│   └── checkout/        # Checkout
+├── components/          # Componentes reutilizáveis
+│   ├── Header.tsx       # Cabeçalho
+│   ├── Footer.tsx       # Rodapé
+│   ├── ProductCard.tsx  # Card de produto
+│   └── CategoryCard.tsx # Card de categoria
+├── contexts/            # Context API
+│   └── CartContext.tsx  # Contexto do carrinho
+├── lib/                 # Utilitários e dados
+│   ├── data.ts         # Dados mockados
+│   └── utils.ts        # Funções auxiliares
+├── types/              # TypeScript types
+│   └── index.ts        # Definições de tipos
+└── public/             # Arquivos estáticos
+```
+
+## 🛠️ Próximos Passos
+
+Para tornar o projeto pronto para produção:
+
+1. **Integração com Backend:**
+   - API para gerenciamento de produtos
+   - Sistema de autenticação de usuários
+   - Gestão de pedidos e estoque
+
+2. **Pagamentos:**
+   - Integração com gateway de pagamento (Mercado Pago, PagSeguro, etc.)
+   - Geração de QR Code PIX real
+   - Processamento de cartões
+
+3. **Funcionalidades Adicionais:**
+   - Sistema de avaliações
+   - Lista de favoritos
+   - Histórico de pedidos
+   - Cupons de desconto
+   - Programa de fidelidade
+
+4. **SEO e Performance:**
+   - Adicionar meta tags dinâmicas
+   - Otimizar imagens com next/image
+   - Implementar sitemap.xml
+   - Analytics (Google Analytics, Vercel Analytics)
+
+## 📞 Suporte
+
+Para questões sobre o deploy ou configuração do domínio, consulte:
+- [Documentação do Vercel](https://vercel.com/docs)
+- [Documentação do Next.js](https://nextjs.org/docs)
