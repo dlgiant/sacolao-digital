@@ -58,65 +58,64 @@ export default function CartPage() {
                 return (
                   <div
                     key={item.product.id}
-                    className="flex items-center gap-4 pb-4 border-b last:border-b-0"
+                    className="relative items-center gap-4 pb-4 border-b last:border-b-0"
                   >
-                    <div className="h-20 w-20 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">
-                      [Imagem]
+                    <div className="flex justify-between">
+                      <div>
+                        <div className="h-25 w-25 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">
+                          [Imagem]
+                        </div>
+                        <div className="flex items-center gap-2 mt-5">
+                          <button
+                            onClick={() =>
+                              updateQuantity(item.product.id, item.quantity - 1)
+                            }
+                            className="p-1 hover:bg-gray-100 rounded"
+                          >
+                            <Minus className="h-4 w-4 text-gray-700" />
+                          </button>
+                          <span className="min-w-[40px] text-center text-gray-800">
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() =>
+                              updateQuantity(item.product.id, item.quantity + 1)
+                            }
+                            className="p-1 hover:bg-gray-100 rounded"
+                          >
+                            <Plus className="h-4 w-4 text-gray-700" />
+                          </button>
+                        </div>
+                      </div>
+                      <div className="relative text-right">
+                        <Link
+                          href={`/produto/${item.product.id}`}
+                          className="font-semibold hover:text-green-600 text-gray-600 block"
+                        >
+                          {item.product.name}
+                        </Link>
+                        <p className="text-sm text-gray-600">
+                          {formatCurrency(discountedPrice)}/{item.product.unit}
+                        </p>
+                        <button
+                          onClick={() => removeFromCart(item.product.id)}
+                          className="text-red-500 hover:text-red-700 mt-5"
+                        >
+                          <Trash2 className="h-5 w-5" />
+                        </button>
+                      </div>
                     </div>
-
-                    <div className="flex-1">
-                      <Link
-                        href={`/produto/${item.product.id}`}
-                        className="font-semibold hover:text-green-600 text-gray-600"
-                      >
-                        {item.product.name}
-                      </Link>
-                      <p className="text-sm text-gray-600">
-                        {formatCurrency(discountedPrice)}/{item.product.unit}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() =>
-                          updateQuantity(item.product.id, item.quantity - 1)
-                        }
-                        className="p-1 hover:bg-gray-100 rounded"
-                      >
-                        <Minus className="h-4 w-4 text-gray-700" />
-                      </button>
-                      <span className="min-w-[40px] text-center text-gray-800">
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() =>
-                          updateQuantity(item.product.id, item.quantity + 1)
-                        }
-                        className="p-1 hover:bg-gray-100 rounded"
-                      >
-                        <Plus className="h-4 w-4 text-gray-700" />
-                      </button>
-                    </div>
-
-                    <div className="text-right">
+                    <div className="absolute text-right right-0 bottom-5">
                       <p className="font-semibold text-gray-600">
                         {formatCurrency(discountedPrice * item.quantity)}
                       </p>
                     </div>
-
-                    <button
-                      onClick={() => removeFromCart(item.product.id)}
-                      className="text-red-500 hover:text-red-700"
-                    >
-                      <Trash2 className="h-5 w-5" />
-                    </button>
                   </div>
                 )
               })}
             </div>
           </div>
         </div>
-
         <div>
           <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-lg font-semibold mb-4 text-gray-900">

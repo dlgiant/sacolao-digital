@@ -7,10 +7,11 @@ import { formatCurrency } from '@/lib/utils'
 import { useCart } from '@/contexts/CartContext'
 
 interface ProductCardProps {
-  product: Product
+  product: Product,
+  isFavorite?: boolean,
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, isFavorite = false }: ProductCardProps) {
   const { addToCart } = useCart()
   const discountedPrice = product.discount
     ? product.price * (1 - product.discount / 100)
@@ -25,12 +26,15 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link href={`/produto/${product.id}`}>
         <div className="relative h-48 bg-gray-200">
           {product.discount && (
-            <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-sm font-semibold z-10">
+            <span className="absolute top-3 left-2 bg-red-500 text-white px-2 py-1 rounded text-sm font-semibold z-10">
               -{product.discount}%
             </span>
           )}
           {product.discount && (
-            <span className="text-gray-400 line-through text-sm absolute top-2 right-2 bg-red-200 px-2 py-1 rounded font-semibold z-10">
+            <span className={`
+              text-gray-400 line-through text-sm absolute top-3 bg-red-200 px-2 py-1 rounded font-semibold z-10
+              ${isFavorite ? 'right-14' : 'right-2'}
+            `}>
               {formatCurrency(product.price)}
             </span>
           )}

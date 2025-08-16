@@ -112,7 +112,7 @@ export default function FavoritosPage() {
               >
                 <Heart className="h-5 w-5 text-red-500 fill-red-500" />
               </button>
-              <ProductCard product={product} />
+              <ProductCard product={product} isFavorite />
             </div>
           ))}
         </div>

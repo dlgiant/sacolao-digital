@@ -37,7 +37,7 @@ export default function OfertasPage() {
       <div className="bg-gradient-to-r from-red-500 to-orange-500 rounded-lg p-8 mb-8 text-white">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
+            <h1 className="text-3xl font-bold mb-2 items-center gap-3">
               <Flame className="h-10 w-10" />
               Ofertas Imperdíveis
             </h1>
@@ -45,24 +45,14 @@ export default function OfertasPage() {
               Economize em produtos frescos e selecionados!
             </p>
           </div>
-          <div className="text-right">
-            <p className="text-3xl font-bold">{discountedProducts.length}</p>
-            <p className="text-sm opacity-90">produtos em oferta</p>
-          </div>
+        </div>
+        <div className="mt-5 flex">
+          <p className="text-3xl font-bold">{discountedProducts.length}</p>
+          <p className="text-sm ml-5 mt-2 opacity-90">Produtos em oferta</p>
         </div>
       </div>
 
       <div className="grid lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <div className="flex items-center gap-3 mb-2">
-            <Tag className="h-8 w-8 text-green-600" />
-            <div>
-              <p className="text-2xl font-bold text-gray-900">{discountedProducts.length}</p>
-              <p className="text-sm text-gray-600">Produtos com desconto</p>
-            </div>
-          </div>
-        </div>
-        
         <div className="bg-white rounded-lg shadow-md p-6">
           <div className="flex items-center gap-3 mb-2">
             <TrendingDown className="h-8 w-8 text-blue-600" />
@@ -142,9 +132,6 @@ export default function OfertasPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {sortedProducts.map((product) => (
                 <div key={product.id} className="relative">
-                  <div className="absolute -top-2 -right-2 z-10 bg-red-500 text-white rounded-full px-3 py-1 text-sm font-bold shadow-lg">
-                    -{product.discount}%
-                  </div>
                   <ProductCard product={product} />
                 </div>
               ))}

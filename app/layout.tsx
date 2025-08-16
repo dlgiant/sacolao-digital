@@ -8,7 +8,7 @@ import { CartProvider } from "@/contexts/CartContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sacolão Digital - Produtos Frescos na Sua Casa",
+  title: "Super Sacolão - Produtos Frescos na Sua Casa",
   description: "Compre frutas, verduras e legumes frescos online. Entrega rápida e produtos de qualidade.",
 };
 
